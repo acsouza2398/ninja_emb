@@ -15,4 +15,4 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: test-7
-      run: 1-PIO-IO/src/ cppcheck
+      run: 1-PIO-IO/ cppcheck src
