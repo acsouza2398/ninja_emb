@@ -27,3 +27,8 @@ jobs:
       - name: test_correct
         run: |
           cppcheck test_correct.c
+
+      # ------------- Tests ----------------
+      - name: test_correct
+        run: |
+          cppcheck ignore/test.c
