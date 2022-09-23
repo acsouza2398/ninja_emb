@@ -12,9 +12,7 @@ jobs:
         uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
-          exclude_check: Aps_1/ASF
-          exclude_check: Aps_1/config
-          
+          exclude_check: Aps_1/ASF          
         
       - name: publish report    
         uses: mikeal/publish-to-github-action@master
