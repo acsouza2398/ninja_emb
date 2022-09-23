@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt install cppcheck
+          sudo apt install cppcheck
 
       # ------------- Tests ----------------
       - name: test_correct
