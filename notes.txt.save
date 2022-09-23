@@ -1,0 +1,7 @@
+Cppcheck
+Tutorial: https://sergioprado.org/analisando-codigo-fonte-cc-com-a-ferramenta-cppcheck/
+ - Clone command not working
+	git clone github.com/danmar/cppcheck.git
+
+ - Install extra libraries
+	sudo apt-get install libpcre3-dev libbz2-dev

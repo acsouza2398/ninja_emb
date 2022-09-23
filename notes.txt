@@ -1,0 +1,17 @@
+Cppcheck
+Tutorial: https://sergioprado.org/analisando-codigo-fonte-cc-com-a-ferramenta-cppcheck/
+Manual: https://cppcheck.sourceforge.io/manual.pdf
+
+ - Clone command not working
+	git clone github.com/danmar/cppcheck.git
+ - Install extra libraries
+	sudo apt-get install libpcre3-dev libbz2-dev
+ - Usage: cppcheck [filename] or cppcheck [path]
+ - To ignore checking file/folder: cppcheck -i [path or filename] [filename or path to check]
+ - To enable more options and severity checking: --enable <flag>
+	- Options: http://docu.slooptools.com/en/services/qccommandline.html#enable-messages
+	- Default is only errors
+Next steps:
+ - action github with cppcheck script to check every commit
+ - run in embarcados directory: only src folder
+ - Check funcao tone division by zero (functions passed by corsi)
