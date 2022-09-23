@@ -1,0 +1,24 @@
+ignore/test.c:8:22: error: Array 'buf[10]' accessed at index 10, which is out of bounds. [arrayIndexOutOfBounds]
+        result += buf[i];
+                     ^
+ignore/test.c:8:9: error: Uninitialized variable: result [uninitvar]
+        result += buf[i];
+        ^
+ignore/test.c:8:16: style: Variable 'result' is assigned a value that is never used. [unreadVariable]
+        result += buf[i];
+               ^
+ignore/test_style.c:4:16: style: Variable 'result' is assigned a value that is never used. [unreadVariable]
+    int result = 0;
+               ^
+ignore/test_style.c:8:16: style: Variable 'result' is assigned a value that is never used. [unreadVariable]
+        result += buf[i];
+               ^
+test_correct.c:4:16: style: Variable 'result' is assigned a value that is never used. [unreadVariable]
+    int result = 0;
+               ^
+test_correct.c:8:16: style: Variable 'result' is assigned a value that is never used. [unreadVariable]
+        result += buf[i];
+               ^
+ignore/test_style.c:18:0: style: The function 'useless' is never used. [unusedFunction]
+
+^
