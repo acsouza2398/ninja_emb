@@ -1,0 +1,11 @@
+name: linting
+
+on: [pull_request]
+jobs:
+  linting:
+    name: cppcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: c-linter
+        uses: tonybaloney/cppcheck-action@master
+        path: 1-PIO-IO/src/main.c
