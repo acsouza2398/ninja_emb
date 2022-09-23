@@ -1,12 +1,12 @@
-name: cppcheck-action-test
+name: testando
 on: [push]
 
 jobs:
   build:
-    name: cppcheck-test
+    name: testando
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: install
       - run: |
           apt install cppcheck
