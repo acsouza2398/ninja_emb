@@ -1,18 +1,29 @@
-name: testando
-on: [push]
+name: cppcheck
+
+on:
+  push:
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
 
 jobs:
   build:
-    name: testando
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: install
-      - run: |
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.8"
+
+      - name: Install dependencies
+        run: |
           apt install cppcheck
-      
-      - name: run check 1
-      - run: |
+
+      # ------------- Tests ----------------
+      - name: test_correct
+        run: |
           cppcheck test_correct.c
-
-
