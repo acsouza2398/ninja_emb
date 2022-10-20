@@ -21,13 +21,19 @@ jobs:
           sudo apt install cppcheck
       # ------------- Tests ----------------
       - name: test_lab1
+          outputs:
+            random-number:
+              description: "Random number"
+              value: ${{ steps.random-number-generator.outputs.random-id }}
         run: |
           cppcheck ignore/test.c --enable=style,warning,performance 2> test.txt
-          echo "result=test.txt" >> $GITHUB_OUTPUT
+          cppcheck ignore/test.c --enable=style,warning,performance
+          echo ::set-output name=log::test.txt
+          echo test.txt
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: $GITHUB_OUTPUT != ' '
+        if: steps.id.outputs.log != ' '
         with:
           title: Issues Test
           content-filepath: test.txt
@@ -36,7 +42,7 @@ jobs:
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        if: $GITHUB_OUTPUT != ' '
+        if: steps.id.outputs.log != ' '
         run:
           echo "Erro no Teste"
           exit 1
