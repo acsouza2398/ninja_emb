@@ -30,7 +30,7 @@ jobs:
         with:
           title: Issues Lab 1
           content-filepath: lab1.txt
-          issue-number: 6
+          issue-number: 1
           labels: |
             report
             automated issue
