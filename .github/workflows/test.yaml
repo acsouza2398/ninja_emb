@@ -38,6 +38,7 @@ jobs:
       # ------------- Fail ----------------
       - name: Error
         if: steps.test.outputs.log != ' '
-        run:
-          echo "Erro no Teste"
-          exit 1
+        uses: actions/github-script@v3
+        with:
+          script: |
+            core.setFailed('Erro no Teste')
