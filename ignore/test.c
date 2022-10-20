@@ -4,7 +4,7 @@ void calc(void)
     int result;
     int i;
  
-    for (i = 0; i <= 11; i++) {
+    for (i = 0; i < 11; i++) {
         result += buf[i];
     }
 }
