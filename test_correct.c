@@ -1,4 +1,4 @@
-void calc(void)
+int calc(void)
 {
     int buf[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     int result = 0;
@@ -7,10 +7,11 @@ void calc(void)
     for (i = 0; i < 10; i++) {
         result += buf[i];
     }
+    return result;
 }
  
 int main(void)
 {
-    calc();
+    int a = calc();
     return 0;
 }
