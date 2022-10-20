@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int calc(void)
 {
     int buf[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -13,5 +15,6 @@ int calc(void)
 int main(void)
 {
     int a = calc();
+    printf(a);
     return 0;
 }
