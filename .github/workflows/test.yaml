@@ -24,8 +24,8 @@ jobs:
         run: |
           cppcheck ignore/test.c --enable=style,warning,performance 2> test.txt
           cppcheck ignore/test.c --enable=style,warning,performance
-          echo ::set-output name=log::$test.txt
-          echo test.txt
+          echo "::set-output name=log::$test.txt"
+          echo $test.txt
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
