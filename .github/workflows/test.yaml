@@ -23,11 +23,11 @@ jobs:
       - name: test_lab1
         run: |
           cppcheck ignore/test.c --enable=style,warning,performance 2> test.txt
-          echo ::set-output name=log::test.txt
+          echo "result=test.txt" >> $GITHUB_OUTPUT
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: steps.id.outputs.log != ' '
+        if: ${{ $GITHUB_OUTPUT != ' ' }}
         with:
           title: Issues Test
           content-filepath: test.txt
@@ -36,7 +36,7 @@ jobs:
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        if: steps.id.outputs.log != ' '
+        if: ${{ $GITHUB_OUTPUT != ' ' }}
         run:
           echo "Erro no Teste"
           exit 1
