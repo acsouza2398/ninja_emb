@@ -21,10 +21,6 @@ jobs:
           sudo apt install cppcheck
       # ------------- Tests ----------------
       - name: test_lab1
-          outputs:
-            random-number:
-              description: "Random number"
-              value: ${{ steps.random-number-generator.outputs.random-id }}
         run: |
           cppcheck ignore/test.c --enable=style,warning,performance 2> test.txt
           cppcheck ignore/test.c --enable=style,warning,performance
