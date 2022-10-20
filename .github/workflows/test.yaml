@@ -22,7 +22,7 @@ jobs:
       # ------------- Tests ----------------
       - name: test_lab1
         run: |
-          cppcheck 1-PIO-IO/src -i1-PIO-IO/src/ASF --enable=style,warning,performance 2> lab1.txt
+          cppcheck 1-PIO-IO/src -i1-PIO-IO/src/ASF --enable=style,warning,performance > lab1.txt
 
       # ------------- issues ----------------
       - name: Create Issue From File
