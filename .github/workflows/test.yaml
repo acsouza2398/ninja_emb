@@ -1,4 +1,4 @@
-name: cppcheck_lab1_issue
+name: cppcheck_test_issue
 
 on:
   push:
@@ -22,16 +22,21 @@ jobs:
       # ------------- Tests ----------------
       - name: test_lab1
         run: |
-          cppcheck 1-PIO-IO/src -i1-PIO-IO/src/ASF --enable=style,warning,performance 2> lab1.txt
-          echo ::set-output name=log::lab1.txt
+          cppcheck ignore/test.c --enable=style,warning,performance 2> test.txt
+          echo ::set-output name=log::test.txt
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
         if: steps.id.outputs.log != ' '
         with:
-          title: Issues Lab 1
-          content-filepath: lab1.txt
-          issue-number: 2
+          title: Issues Test
+          content-filepath: test.txt
           labels: |
             report
             automated issue
+      # ------------- Fail ----------------
+      - name: Error
+        if: steps.id.outputs.log != ' '
+        run:
+          echo "Erro no Teste"
+          exit 1
