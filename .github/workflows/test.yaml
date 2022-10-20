@@ -25,6 +25,7 @@ jobs:
         run: |
           cppcheck test_correct.c --enable=style,warning,performance 2> test.txt
           echo "log=$test.txt" >>$GITHUB_OUTPUT
+          echo "$text.txt"
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
