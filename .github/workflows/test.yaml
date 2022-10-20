@@ -27,7 +27,7 @@ jobs:
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: ${{ $GITHUB_OUTPUT != ' ' }}
+        if: $GITHUB_OUTPUT != ' '
         with:
           title: Issues Test
           content-filepath: test.txt
@@ -36,7 +36,7 @@ jobs:
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        if: ${{ $GITHUB_OUTPUT != ' ' }}
+        if: $GITHUB_OUTPUT != ' '
         run:
           echo "Erro no Teste"
           exit 1
