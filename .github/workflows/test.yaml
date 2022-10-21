@@ -42,7 +42,7 @@ jobs:
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: ${{test.txt != ''}}
+        if: ${{output-log != ''}}
         with:
           title: Issues Test
           content-filepath: test.txt
@@ -51,7 +51,7 @@ jobs:
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        if: ${{test.txt != ''}}
+        if: ${{output-log != ''}}
         uses: actions/github-script@v3
         with:
           script: |
