@@ -23,7 +23,7 @@ jobs:
       - name: test_lab1
         id: test
         run: |
-          cppcheck test_correct.c --enable=style,warning,performance 2> test.txt
+          cppcheck ignore/test.c --enable=style,warning,performance 2> test.txt
           echo "log=$test.txt" >>$GITHUB_OUTPUT
           echo ${{ steps.test.outputs.log }}
       # ------------- issues ----------------
