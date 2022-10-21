@@ -24,6 +24,7 @@ jobs:
         id: test
         run: |
           cppcheck ignore/test.c --enable=style,warning,performance 2> test.txt
+          cppcheck ignore/test.c --enable=style,warning,performance
           echo "log=test.txt" >>$GITHUB_OUTPUT
           echo ${{ steps.test.outputs.log }}
       # ------------- issues ----------------
