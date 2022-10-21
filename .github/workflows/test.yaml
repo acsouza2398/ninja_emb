@@ -41,7 +41,7 @@ jobs:
       - name: extract
         id: test
         run:
-          value=`cat test.log`
+          value=`cat test.txt`
           echo "log=$value" >>$GITHUB_OUTPUT
     
       # ------------- issues ----------------
