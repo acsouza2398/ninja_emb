@@ -38,11 +38,15 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: output-log
+          
+      - name: extract
+        run:
+          value=cat test.log
     
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: ${{ output-log != '' }}
+        if: ${{ $value != '' }}
         with:
           title: Issues Test
           content-filepath: test.txt
@@ -51,7 +55,7 @@ jobs:
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        if: ${{ output-log != '' }}
+        if: ${{ $value != '' }}
         uses: actions/github-script@v3
         with:
           script: |
