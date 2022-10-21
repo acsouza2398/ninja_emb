@@ -24,13 +24,12 @@ jobs:
         id: test
         run: |
           cppcheck ignore/test.c --enable=style,warning,performance 2> test.txt
-          cppcheck ignore/test.c --enable=style,warning,performance
           echo "log=test.txt" >>$GITHUB_OUTPUT
           echo ${{ steps.test.outputs.log }}
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: contains(steps.test.outputs.log, '.c')
+        if: ${{contains(steps.test.outputs.log, 'error') || contains(steps.test.outputs.log, 'style') || contains(steps.test.outputs.log, 'warning') || contains(steps.test.outputs.log, 'performance')}}
         with:
           title: Issues Test
           content-filepath: test.txt
