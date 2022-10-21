@@ -24,21 +24,34 @@ jobs:
         id: test
         run: |
           cppcheck test_correct.c --enable=style,warning,performance 2> test.txt
-          echo "log=$test.txt" >>$GITHUB_OUTPUT
-          echo ${{ steps.test.outputs.log }}
+          
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-log
+          path: test.txt
+  Upload:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Log
+        uses: actions/download-artifact@v3
+        with:
+          name: output-log
+    
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: steps.test.outputs.log != ''
+        if: output-log != ''
         with:
           title: Issues Test
-          content-filepath: test.txt
+          content-filepath: output-log
           labels: |
             report
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        if: steps.test.outputs.log != ''
+        if: output-log != ''
         uses: actions/github-script@v3
         with:
           script: |
