@@ -42,16 +42,16 @@ jobs:
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: output-log != ''
+        if: test.txt != ''
         with:
           title: Issues Test
-          content-filepath: output-log
+          content-filepath: test.txt
           labels: |
             report
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        if: output-log != ''
+        if: test.txt != ''
         uses: actions/github-script@v3
         with:
           script: |
