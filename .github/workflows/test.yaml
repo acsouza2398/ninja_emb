@@ -29,7 +29,7 @@ jobs:
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: ${{contains(steps.test.outputs.log, 'error') || contains(steps.test.outputs.log, 'style') || contains(steps.test.outputs.log, 'warning') || contains(steps.test.outputs.log, 'performance')}}
+        if: ${{contains(steps.test.outputs.log, 'error:') || contains(steps.test.outputs.log, 'style:') || contains(steps.test.outputs.log, 'warning:') || contains(steps.test.outputs.log, 'performance:')}}
         with:
           title: Issues Test
           content-filepath: test.txt
