@@ -1,4 +1,4 @@
-name: cppcheck_test_issue
+name: cppcheck_lab1_issue
 
 on:
   push:
@@ -21,43 +21,25 @@ jobs:
           sudo apt install cppcheck
       # ------------- Tests ----------------
       - name: test_lab1
+        id: lab1
         run: |
-          cppcheck test_correct.c --enable=style,warning,performance 2> test.txt
-          
-      - name: Upload output file
-        uses: actions/upload-artifact@v3
-        with:
-          name: output-log
-          path: test.txt
-  Upload:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download Log
-        uses: actions/download-artifact@v3
-        with:
-          name: output-log
-          
-      - name: extract
-        id: test
-        run:
-          value=`cat test.txt`
-          echo "log=$value" >>$GITHUB_OUTPUT
-    
+          cppcheck 1-PIO-IO/src -i1-PIO-IO/src/ASF --enable=style,warning,performance 2> lab1.txt
+          python parser.py
+          echo $GITHUB_OUTPUT
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
-        if: ${{ steps.test.outputs.log != '' }}
+        if: steps.lab1.outputs.log != 'True'
         with:
-          title: Issues Test
-          content-filepath: test.txt
+          title: Issues Lab 1
+          content-filepath: lab1.txt
           labels: |
             report
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        if: ${{ steps.test.outputs.log != '' }}
+        if: steps.lab1.outputs.log != 'True'
         uses: actions/github-script@v3
         with:
           script: |
-            core.setFailed('Erro no Teste')
+            core.setFailed('Erro no Lab 1')
