@@ -24,8 +24,8 @@ jobs:
         id: lab1
         run: |
           cppcheck 1-PIO-IO/src -i1-PIO-IO/src/ASF --enable=style,warning,performance 2> lab1.txt
-          python parser.py
-          echo $GITHUB_OUTPUT
+          output=$(python parser.py)
+          echo "Result: ${{ steps.lab1.outputs.log }}"
       # ------------- issues ----------------
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v4
