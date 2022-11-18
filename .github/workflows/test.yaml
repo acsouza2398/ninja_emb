@@ -36,6 +36,5 @@ jobs:
             automated issue
       # ------------- Fail ----------------
       - name: Error
-        uses: actions/github-script@v3
-        with:
-          python3 parser.py
+        run: |
+            python3 parser.py
